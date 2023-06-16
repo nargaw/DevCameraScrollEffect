@@ -16,15 +16,16 @@ export default function Experience()
 
     return <>
         {/* Orbit Controls */}
-        {/* <OrbitControls makeDefault enableZoom={false} enablePan={false}/> */}
+        <OrbitControls makeDefault enableZoom={true} enablePan={false}/>
         <fog attach="fog" args={[0xffffff, 6, 7]} />
-        <Stage adjustCamera={0.05}  intensity={0.5} shadows="contact" > 
+        <Stage adjustCamera={1.5}  intensity={0.5} shadows="contact" > 
             {/* control presentation - user rotation of model */}
             <PresentationControls 
                 global 
                 rotation={ [ 0., 0.0, 0 ] }
                 polar={ [ 0, 0 ] }
                 azimuth={ [ -Math.PI * 0.5,  Math.PI * 0.5 ] }
+                // azimuth={ [ 0,  0 ] }
                 config={ { mass: 2, tension: 50 } }
                 snap={ { mass: 2, tension: 50 } }
             >
@@ -32,21 +33,37 @@ export default function Experience()
                 <group> 
                     <mesh>
                         <cylinderGeometry args={[0.5, 0.5, 0.4]}/>
-                        <meshStandardMaterial color={0x1f1f1f}/>
+                        <meshStandardMaterial />
                     </mesh>
                     <mesh position={[0, 1., 0.]}>
                         <boxGeometry args={[0.5, 1.75, 0.5]}/>
+                        <meshStandardMaterial transparent={true} opacity={0.35}/>
+                    </mesh>
+                    <mesh position={[-0.5, 1.45, 0]}>
+                        <boxGeometry args={[1, 0.1, 0.1]} />
                         <meshStandardMaterial />
+                    </mesh>
+                    <mesh position={[0.5, 1.45, 0]}>
+                        <boxGeometry args={[1, 0.1, 0.1]} />
+                        <meshStandardMaterial />
+                    </mesh>
+                    <mesh position={[0, 0.85, 0]}>
+                        <boxGeometry args={[0.25, 0.25, 0.25]} />
+                        <meshStandardMaterial transparent={true} opacity={0.5} color={0x0000ff} />
+                    </mesh>
+                    <mesh position={[0, 0.85, 0]}>
+                        <boxGeometry args={[0.125, 0.125, 0.125]} />
+                        <meshStandardMaterial transparent={true} opacity={0.9} color={0x00ff00} />
                     </mesh>
                 </group>
                 
             </PresentationControls>
-
+            
             {/* Ground Mesh */}
-            <mesh rotation={[-Math.PI * 0.5, 0, 0]} receiveShadow>
+            {/* <mesh rotation={[-Math.PI * 0.5, 0, 0]} receiveShadow>
                 <planeGeometry args={[50, 50]} />
-                <meshStandardMaterial />
-            </mesh>
+                <meshStandardMaterial side={THREE.DoubleSide}/>
+            </mesh> */}
 
         </Stage>
         
