@@ -11,3 +11,7 @@ body,
     background-color: #ffffff;
     touch-action: none;
 }
+
+/* ::-webkit-scrollbar {
+    width: 10px;
+} */
