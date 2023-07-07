@@ -48,7 +48,7 @@ export default function Experience()
                 <h1 style={{ top: '500vh' }}>third page</h1>
             </Scroll>  */}
                 {/* control presentation - user rotation of model */}
-                {/* <PresentationControls 
+                <PresentationControls 
                     global 
                     rotation={ [ 0., 0.0, 0 ] }
                     polar={ [ 0, 0 ] }
@@ -56,7 +56,7 @@ export default function Experience()
                     // azimuth={ [ 0,  0 ] }
                     config={ { mass: 2, tension: 50 } }
                     snap={ { mass: 2, tension: 50 } }
-                > */}
+                >
                     {/* Model */}
                     <group> 
                         <mesh>
@@ -84,7 +84,7 @@ export default function Experience()
                             <meshPhongMaterial depthWrite={false} transparent={true} opacity={0.75} color={0x00ff00} side={THREE.DoubleSide}/>
                         </mesh>
                     </group>   
-                {/* </PresentationControls> */}
+                </PresentationControls>
             </Stage>  
         </ScrollControls>
     </>
