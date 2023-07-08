@@ -9,10 +9,14 @@ export default function Experience()
 {
     const box = useRef()
     const specimen = useRef()
+    const scr = useRef()
+    console.log(scr.current)
     const material = new THREE.MeshNormalMaterial()
     const material2 = new THREE.MeshStandardMaterial({
         color: 0xffffff
     })
+
+    
 
 
     // const scroll = useScroll()
@@ -37,6 +41,10 @@ export default function Experience()
     //     const r1  = scroll.range(0, 1/3)
     // })
 
+    useEffect(() => {
+        console.log(specimen.current)
+    }, [scr])
+
     return <>
         <ScrollControls pages={4}>
             <fog attach="fog" args={[0xffffff, 6, 7]} />
@@ -58,12 +66,12 @@ export default function Experience()
                     snap={ { mass: 2, tension: 50 } }
                 >
                     {/* Model */}
-                    <group> 
+                    <group  > 
                         <mesh>
                             <cylinderGeometry args={[0.5, 0.5, 0.4]}/>
                             <meshStandardMaterial />
                         </mesh>
-                        <mesh position={[0, 1., 0.]}>
+                        <mesh position={[0, 1., 0.]} >
                             <boxGeometry args={[0.5, 1.75, 0.5]}/>
                             <meshStandardMaterial depthWrite={false} transparent={true} opacity={0.2}/>
                         </mesh>
@@ -80,7 +88,7 @@ export default function Experience()
                             <meshStandardMaterial depthWrite={false} transparent={true} opacity={0.25} color={0xff0000} side={THREE.DoubleSide}/>
                         </mesh>
                         <mesh position={[0, 0.85, 0]}>
-                            <boxGeometry args={[0.125, 0.125, 0.125]} />
+                            <boxGeometry args={[0.125, 0.125, 0.125]} ref={specimen.current}/>
                             <meshPhongMaterial depthWrite={false} transparent={true} opacity={0.75} color={0x00ff00} side={THREE.DoubleSide}/>
                         </mesh>
                     </group>   
